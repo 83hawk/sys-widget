@@ -1,0 +1,26 @@
+[package]
+name = "sys-widget"
+version = "0.2.0"
+edition = "2021"
+
+[dependencies]
+# UI and System
+relm4 = "0.8"
+gtk4-layer-shell = "0.3"
+sysinfo = "0.30"
+chrono = "0.4"
+mpris = "2.0"
+
+# Async and Networking
+tokio = { version = "1", features = ["rt", "time", "macros"] } # Added 'macros' for #[tokio::main]
+reqwest = { version = "0.11", features = ["json"] }
+dotenvy = "0.15" # Add this to load your .env file
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_derive = "1.0.228"
+toml = "1.1.2"
+notify = "8.2.0"
+dirs = "6.0.0"
+

@@ -1,0 +1,66 @@
+.transparent-window {
+    background: rgba(15, 15, 15, 0.92);
+    border-radius: 14px;
+}
+
+/* Container */
+.main-box {
+    padding: 20px;
+}
+
+/* Section titles */
+.label-title {
+    font-size: 11px;
+    color: #8a8a8a;
+    letter-spacing: 1px;
+}
+
+/* Time */
+.time-large {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.date-sub {
+    font-size: 12px;
+    color: #aaaaaa;
+}
+
+/* Stats (CPU, RAM, etc.) */
+.stats-val {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.stats-text {
+    font-size: 13px;
+    color: #cccccc;
+}
+
+/* Weather */
+.weather-icon {
+    font-size: 28px;
+}
+
+.weather-desc {
+    font-size: 13px;
+    color: #bbbbbb;
+}
+
+/* Music */
+.player-artist {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.player-title {
+    font-size: 12px;
+    color: #aaaaaa;
+}
+
+* {
+    font-family: "Inter", "Segoe UI", sans-serif;
+}

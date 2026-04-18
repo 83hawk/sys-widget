@@ -1,0 +1,71 @@
+use gtk::prelude::*;
+use gtk::{gdk, CssProvider, STYLE_PROVIDER_PRIORITY_APPLICATION};
+use std::path::PathBuf;
+
+/// Search for a theme file in this priority order:
+/// 1. ~/.config/sys-widget/themes/
+/// 2. /usr/share/sys-widget/themes/
+/// 3. ./themes/
+///
+/// Example:
+/// theme = "glass"
+/// → looks for glass.css
+fn find_theme_path(theme: &str) -> Option<PathBuf> {
+    let filename = format!("{}.css", theme);
+
+    // 1. User config directory
+    if let Some(home) = std::env::var_os("HOME") {
+        let mut user_path = PathBuf::from(home);
+        user_path.push(".config/sys-widget/themes");
+        user_path.push(&filename);
+
+        if user_path.exists() {
+            return Some(user_path);
+        }
+    }
+
+    // 2. System-wide install location
+    let mut system_path = PathBuf::from("/usr/share/sys-widget/themes");
+    system_path.push(&filename);
+
+    if system_path.exists() {
+        return Some(system_path);
+    }
+
+    // 3. Local project directory (development)
+    let mut local_path = PathBuf::from("themes");
+    local_path.push(&filename);
+
+    if local_path.exists() {
+        return Some(local_path);
+    }
+
+    None
+}
+
+/// Load a GTK CSS theme safely with fallback to `default.css`
+pub fn load_theme(theme: &str) {
+    let provider = CssProvider::new();
+
+    // Try requested theme first, then fallback to default
+    let path = find_theme_path(theme)
+        .or_else(|| find_theme_path("default"));
+
+    let Some(path) = path else {
+        eprintln!("No valid theme found (even default.css missing).");
+        return;
+    };
+
+    if let Err(e) = provider.load_from_path(&path) {
+        eprintln!("Failed to load theme {:?}: {}", path, e);
+        return;
+    }
+
+    println!("Loaded theme from: {:?}", path);
+
+    gtk::style_context_add_provider_for_display(
+        &gdk::Display::default().expect("Could not connect to display"),
+        &provider,
+        STYLE_PROVIDER_PRIORITY_APPLICATION,
+    );
+}

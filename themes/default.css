@@ -1,0 +1,49 @@
+/* This targets the actual window gadget in GTK4 */
+window {
+	background-image: none;
+    	box-shadow: none;
+	background: transparent;
+}
+
+/* This targets the internal container */
+.main-box {
+    /* Adjust this 0.3 to your liking for background darkness */
+	background-color: rgba(0, 0, 0, 0); /* 0.0 for fully see-through */
+   	border-radius: 1px;
+    	padding: 1px;
+    /* Optional: A subtle glow to make it pop */
+    	border: 0px solid rgba(255, 255, 255, 0);
+}
+.transparent-window {
+    background: transparent;
+}
+/* Typography */
+.label-title { font-family: "Abel"; font-size: 13px; color: #a6adc8; opacity: 0.8; }
+.time-large { font-family: "Bebas Neue"; font-size: 44px; color: #89b4fa; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+.date-sub { font-family: "Abel"; font-size: 14px; color: #cdd6f4; }
+
+.weather-icon {
+    font-family: "Symbols Nerd Font", "JetBrainsMono Nerd Font";
+    font-size: 28px;
+    color: #f9e2af;
+}
+
+.weather-desc { font-family: "Abel"; font-size: 15px; color: #cdd6f4; }
+.stats-val { font-family: "Abel"; font-size: 20px; color: #89b4fa; font-weight: bold; }
+.stats-text { font-family: "Abel"; font-size: 13px; color: #cdd6f4; }
+
+.player-artist { 
+    font-family: "Abel"; 
+    font-size: 20px; 
+    color: #ffffff; 
+    margin-top: 5px; 
+}
+
+.player-title { 
+    font-family: "Abel"; 
+    font-style: italic; 
+    font-size: 11px; 
+    color: #cdd6f4; 
+    opacity: 0.9;
+}
+
